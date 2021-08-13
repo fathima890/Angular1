@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+.calendarcustom
+{
+    background-image:"src\assets\icons8-calendar-24.png"
+}
+
+.container{
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows: auto auto auto;
+}
+.container div {
+  padding: 10px;
+
+}
+  .item img
+  {
+width: 180px;
+  }
+
+
+@import "assets/icons/icon-fonts.css";
+* {
+  unicode-bidi: embed;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

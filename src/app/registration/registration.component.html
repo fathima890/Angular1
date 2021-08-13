@@ -1,0 +1,91 @@
+<!-- Default form register -->
+<div class="container">
+<form [formGroup]="registrationForm" class="text-center border border-light p-5 needs-validation">
+
+    <p class="h4 mb-4">Customer Registration</p>
+
+    <div class="form-row mb-4">
+
+        <!-- First name -->
+        <input type="text" id="defaultRegisterFormFirstName" formControlName="firstName" class="form-control" placeholder="First Name*" required>
+        <div class="invalid-feedback">
+          Please provide a valid name.
+      </div>
+    </div>
+
+    <div class="form-row mb-4">
+      <input type="text" id="defaultRegisterFormLastName" formControlName="lastName" class="form-control" placeholder="Last Name*" required>
+      </div>
+
+ 
+    <div class="form-row mb-4">
+      <div class="input-group">
+        <input class="form-control" formControlName="dob" placeholder="Date Of Birth*"
+               name="dp"  ngbDatepicker #d="ngbDatepicker" required>
+        <div class="input-group-append">
+          <i class="bi bi-calendar"></i>
+          <button class="btn btn-link" style="border:#ced4da;border-style: solid; border-width: 1px;" (click)="d.toggle()" type="button">
+            <img src="../../assets/icons8-calendar-24.png">
+          </button>
+        </div>
+      </div>
+      </div>
+      <div class="form-row mb-4">
+      <div class="input-group">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" formControlName="gender" type="radio" name="gender" id="inlineRadio1" value="male" required>
+          <label class="form-check-label" for="inlineRadio1">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="gender" name="gender" id="inlineRadio2" value="female" required>
+          <label class="form-check-label" for="inlineRadio2">Female</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row mb-4">
+      <div class="input-group">
+     <!-- E-mail -->
+     <input type="email" id="defaultRegisterFormEmail" formControlName="email" class="form-control" placeholder="Email*" required>
+
+      </div>
+    </div>
+    
+    <!-- cancel button -->
+    <button mdbBtn color="info" block="true" class="btn btn-danger col-md4" >Cancel</button>
+
+    <!-- Register button -->
+    <button mdbBtn color="info" block="true" class="btn btn-primary col-md4"  (click)="createUser()" id="btnSubmit" >Register</button>
+
+  </form>
+  <!-- Default form register -->
+
+  <table class="table">
+    <caption>List of users</caption>
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">DOB</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Email</th>
+        <th scope="col" colspan="2">Operations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.id}}</td>
+        <td>{{user.f_name}}</td>
+        <td>{{user.l_name}}</td>
+        <td>{{user.dob | date: 'shortDate'}}</td>
+        <td>{{user.gender}}</td>
+        <td>{{user.email}}</td>
+        <td><button class="btn btn-link" ><img src="../../assets/icons8-edit-24.png">
+        </button></td>
+        <td><button class="btn btn-link" (click)="deleteUser(user)"><img src="../../assets/icons8-add-trash-24.png">
+        </button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
